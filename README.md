@@ -1,67 +1,93 @@
-
 # 🔐 API de Autenticação / Authentication API
 
-📌 API simples em Java com Spring Boot e MySQL para autenticação e registro de usuários.  
-📌 Simple API in Java with Spring Boot and MySQL for user authentication and registration.
+API em Java com Spring Boot que permite registro e login de usuários, utilizando JWT para autenticação e BCrypt para segurança de senhas.
 
-> 🇧🇷 Este projeto foi desenvolvido como prática de estudo.  
-> 🇺🇸 This project was developed as a study practice.
-
-▶️ [Versão em Português](#versão-em-português)  
-▶️ [English Version](#english-version)
+Java API using Spring Boot for user registration and login, with JWT authentication and BCrypt password hashing.
 
 ---
 
-## 🇧🇷 Versão em Português
+<details>
+<summary>🇧🇷 Versão em Português</summary>
 
-### 🔧 Tecnologias
+## 🔧 Tecnologias
 
-- Java 17+
+- Java
 - Spring Boot
-- MySQL
 - Spring Security
+- Spring Data JPA
+- MySQL
 - JWT (JSON Web Token)
-- BCrypt para criptografia de senhas
+- BCrypt
 
-### 🔐 Funcionalidades
+## 🔐 Funcionalidades
 
-- Registro de usuários
-- Login com retorno de JWT
-- Autenticação e autorização com base no papel do usuário
+- Registro de usuário com senha criptografada
+- Login com geração de token JWT
+- Proteção de rotas com autenticação via token
+- Níveis de acesso:
+  - `helloUser` (usuário autenticado)
+  - `helloAdmin` (admin)
+  - `helloMaster` (mestre)
+- Rota pública: `hello` (todos acessam)
 
-### 📁 Rotas
+## 🔄 Rotas
 
-- `POST /register` → Registro de usuário
-- `POST /login` → Login e geração de token JWT
-- `GET /hello` → Lista todos os usuários (acesso geral)
-- `GET /helloUser` → Acesso apenas para usuários com papel USER
-- `GET /helloAdmin` → Acesso apenas para usuários com papel ADMIN
-- `GET /helloMaster` → Acesso apenas para usuários com papel MASTER
+| Método | Rota         | Acesso       | Descrição                        |
+|--------|--------------|--------------|----------------------------------|
+| POST   | `/register`  | Público      | Registro de novo usuário         |
+| POST   | `/login`     | Público      | Autenticação e geração de token  |
+| GET    | `/hello`     | Público      | Rota aberta                      |
+| GET    | `/helloUser` | Autenticado  | Apenas usuários autenticados     |
+| GET    | `/helloAdmin`| ADMIN        | Apenas admins                    |
+| GET    | `/helloMaster`| MASTER      | Apenas mestres                   |
+
+## 🗄️ Banco de Dados
+
+- MySQL
+- Tabela de usuários com campos como `username`, `password` (criptografada), `role`, etc.
+
+</details>
 
 ---
 
-## 🇺🇸 English Version
+<details>
+<summary>🇺🇸 English Version</summary>
 
-### 🔧 Technologies
+## 🔧 Technologies
 
-- Java 17+
+- Java
 - Spring Boot
-- MySQL
 - Spring Security
+- Spring Data JPA
+- MySQL
 - JWT (JSON Web Token)
-- BCrypt for password encryption
+- BCrypt
 
-### 🔐 Features
+## 🔐 Features
 
-- User registration
-- Login with JWT return
-- Authentication and role-based access control
+- User registration with password hashing
+- Login with JWT token generation
+- Protected routes using token authentication
+- Role-based access:
+  - `helloUser` (authenticated user)
+  - `helloAdmin` (admin)
+  - `helloMaster` (master)
+- Public route: `hello` (open to all)
 
-### 📁 Routes
+## 🔄 Routes
 
-- `POST /register` → User registration
-- `POST /login` → Login and JWT token generation
-- `GET /hello` → Lists all users (public access)
-- `GET /helloUser` → Access for users with role USER
-- `GET /helloAdmin` → Access for users with role ADMIN
-- `GET /helloMaster` → Access for users with role MASTER
+| Method | Endpoint       | Access       | Description                     |
+|--------|----------------|--------------|---------------------------------|
+| POST   | `/register`    | Public       | Register a new user             |
+| POST   | `/login`       | Public       | Authenticate and return a token|
+| GET    | `/hello`       | Public       | Open route                      |
+| GET    | `/helloUser`   | Authenticated| Authenticated users only        |
+| GET    | `/helloAdmin`  | ADMIN        | Admin users only                |
+| GET    | `/helloMaster` | MASTER       | Master users only               |
+
+## 🗄️ Database
+
+- MySQL
+- User table with fields such as `username`, `password` (encrypted), `role`, etc.
+
+</details>
