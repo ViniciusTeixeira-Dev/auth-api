@@ -1,99 +1,67 @@
 
-# 🔐 API de Autenticação em Java / Java Authentication API
+# 🔐 API de Autenticação / Authentication API
 
-📌 Projeto simples com Java, Spring Boot e MySQL que implementa uma API de autenticação com **senhas criptografadas com Bcrypt** e **JWT** para controle de acesso baseado em perfis de usuário.  
-📌 Simple project using Java, Spring Boot, and MySQL that implements an authentication API with **Bcrypt-encrypted passwords** and **JWT** for role-based access control.
+📌 API simples em Java com Spring Boot e MySQL para autenticação e registro de usuários.  
+📌 Simple API in Java with Spring Boot and MySQL for user authentication and registration.
 
-> 🇧🇷 Este projeto foi desenvolvido como prática de estudo com autenticação e controle de acesso.  
-> 🇺🇸 This project was developed as a study practice on authentication and access control.
+> 🇧🇷 Este projeto foi desenvolvido como prática de estudo.  
+> 🇺🇸 This project was developed as a study practice.
+
+▶️ [Versão em Português](#versão-em-português)  
+▶️ [English Version](#english-version)
 
 ---
 
 ## 🇧🇷 Versão em Português
 
-### 🚀 Tecnologias
+### 🔧 Tecnologias
 
 - Java 17+
 - Spring Boot
-- Spring Security
 - MySQL
+- Spring Security
 - JWT (JSON Web Token)
-- Bcrypt
+- BCrypt para criptografia de senhas
 
----
+### 🔐 Funcionalidades
 
-### 📦 Funcionalidades
+- Registro de usuários
+- Login com retorno de JWT
+- Autenticação e autorização com base no papel do usuário
 
-- Registro de usuários com senha criptografada
-- Login com geração de token JWT
-- Autenticação e autorização com base em perfis:
-  - `USER`
-  - `ADMIN`
-  - `MASTER`
+### 📁 Rotas
 
----
-
-### 📌 Rotas
-
-| Método | Endpoint        | Descrição                          | Acesso       |
-|--------|------------------|-------------------------------------|--------------|
-| POST   | `/register`      | Registrar novo usuário              | Público      |
-| POST   | `/login`         | Autenticar e gerar token            | Público      |
-| GET    | `/hello`         | Mensagem pública                    | Público      |
-| GET    | `/helloUser`     | Mensagem para perfil USER           | Autenticado  |
-| GET    | `/helloAdmin`    | Mensagem para perfil ADMIN          | ADMIN        |
-| GET    | `/helloMaster`   | Mensagem para perfil MASTER         | MASTER       |
-
-📌 Envie o token JWT no header:
-```
-Authorization: Bearer <seu_token>
-```
+- `POST /register` → Registro de usuário
+- `POST /login` → Login e geração de token JWT
+- `GET /hello` → Lista todos os usuários (acesso geral)
+- `GET /helloUser` → Acesso apenas para usuários com papel USER
+- `GET /helloAdmin` → Acesso apenas para usuários com papel ADMIN
+- `GET /helloMaster` → Acesso apenas para usuários com papel MASTER
 
 ---
 
 ## 🇺🇸 English Version
 
-### 🚀 Technologies
+### 🔧 Technologies
 
 - Java 17+
 - Spring Boot
-- Spring Security
 - MySQL
+- Spring Security
 - JWT (JSON Web Token)
-- Bcrypt
+- BCrypt for password encryption
 
----
+### 🔐 Features
 
-### 📦 Features
+- User registration
+- Login with JWT return
+- Authentication and role-based access control
 
-- User registration with encrypted password
-- Login with JWT token generation
-- Authentication and role-based access control:
-  - `USER`
-  - `ADMIN`
-  - `MASTER`
+### 📁 Routes
 
----
-
-### 📌 Endpoints
-
-| Method | Endpoint        | Description                         | Access       |
-|--------|------------------|-------------------------------------|--------------|
-| POST   | `/register`      | Register new user                   | Public       |
-| POST   | `/login`         | Authenticate and generate token     | Public       |
-| GET    | `/hello`         | Public message                      | Public       |
-| GET    | `/helloUser`     | Message for USER role               | Authenticated|
-| GET    | `/helloAdmin`    | Message for ADMIN role              | ADMIN        |
-| GET    | `/helloMaster`   | Message for MASTER role             | MASTER       |
-
-📌 Include the JWT token in the header:
-```
-Authorization: Bearer <your_token>
-```
-
----
-
-## 📄 Licença / License
-
-Este projeto está sob a licença MIT.  
-This project is under the MIT license.
+- `POST /register` → User registration
+- `POST /login` → Login and JWT token generation
+- `GET /hello` → Lists all users (public access)
+- `GET /helloUser` → Access for users with role USER
+- `GET /helloAdmin` → Access for users with role ADMIN
+- `GET /helloMaster` → Access for users with role MASTER
